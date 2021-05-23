@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node-dev src/index.ts",
+    "test": "jest --watchAll --no-cache"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/turkonjavla/orders-service/issues"
   },
-  "homepage": "https://github.com/turkonjavla/orders-service#readme"
+  "homepage": "https://github.com/turkonjavla/orders-service#readme",
+  "dependencies": {
+    "ts-node-dev": "^1.1.6"
+  }
 }
