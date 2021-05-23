@@ -1,0 +1,19 @@
+{
+  "name": "orders-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turkonjavla/orders-service.git"
+  },
+  "author": "Vladimir Turkonja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turkonjavla/orders-service/issues"
+  },
+  "homepage": "https://github.com/turkonjavla/orders-service#readme"
+}
