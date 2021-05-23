@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orders
+  template:
+    metadata:
+      labels:
+        app: orders
+    spec:
+      containers:
+        - name: orders
+          image: ashtar23/orders-service
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing-config-env
+                  key: JWT_KEY
+            - name: ORDERS_MONGO_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing-config-env
+                  key: ORDERS_MONGO_URI
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing-config-env
+                  key: NATS_URL
+            - name: NATS_CLUSTER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing-config-env
+                  key: NATS_CLUSTER_ID
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-srv
+spec:
+  selector:
+    app: orders
+  ports:
+    - name: orders
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
