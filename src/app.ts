@@ -3,6 +3,9 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { currentUser, errorHandler, NotFoundError } from '@vttickets/common';
 import { indexOrderRouter } from './routes';
+import { showOrderRouter } from './routes/show';
+import { newOrderRouter } from './routes/new';
+import { deleteOrderRouter } from './routes/delete';
 const app = express();
 
 app.set('trust proxy', true);
@@ -16,6 +19,9 @@ app.use(
 app.use(currentUser);
 
 app.use(indexOrderRouter);
+app.use(showOrderRouter);
+app.use(newOrderRouter);
+app.use(deleteOrderRouter);
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();
