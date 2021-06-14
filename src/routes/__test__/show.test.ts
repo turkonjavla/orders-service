@@ -52,5 +52,5 @@ it('return an error if one user tries to fetch another users order', async () =>
     .get(`/api/orders/${order.id}`)
     .set('Cookie', global.getAuthCookie())
     .send()
-    .expect(500);
+    .expect(401);
 });
